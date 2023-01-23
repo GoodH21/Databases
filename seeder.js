@@ -15,14 +15,14 @@ async function main() {
   try {
     await client.connect();
     const db = client.db();
-    const results = await db.collection("workout").find({}).count();
+    const results = await db.collection("workouts").find({}).count();
 
     /**
      * If existing records then delete the current collections
      */
     if (results) {
         console.info("deleting collection");
-        await db.collection("workout").drop();
+        await db.collection("workouts").drop();
     }
 
     /**
@@ -36,7 +36,7 @@ async function main() {
      */
 
     const data = await fs.readFile(path.join(__dirname, "workout.json"), "utf8");
-    await db.collection("workout").insertMany(JSON.parse(data));
+    await db.collection("workouts").insertMany(JSON.parse(data));
 
     load.stop();
     console.info(

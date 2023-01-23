@@ -6,6 +6,9 @@ const chalk = require("chalk");
 const bodyParser = require("body-parser");
 const expressSession = require("express-session");
 
+const homeController = require("./controllers/home")
+const workoutController = require("./controllers/workouts");
+
 const app = express();
 app.set("view engine", "ejs");
 
@@ -20,6 +23,19 @@ mongoose.connection.on("error", (err) => {
   );
   process.exit();
 });
+
+const Workout = require("./models/Workout");
+
+app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/", homeController.list);
+app.get("/workouts", workoutController.list);
+app.get("/workouts/delete/:id", workoutController.delete);
+app.get("/workouts/update/:id", workoutController.edit);
+app.post("/workouts/update/:id", workoutController.update);
+
 
 app.listen(PORT, () => {
     console.log(
