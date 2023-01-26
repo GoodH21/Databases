@@ -12,8 +12,6 @@ exports.list = async (req, res) => {
   }
 };
 
-
-
 exports.delete = async (req, res) => {
   const id = req.params.id;
   try {
@@ -30,7 +28,7 @@ exports.edit = async (req, res) => {
   const id = req.params.id;
   try{
       const workout = await Workout.findById(id);
-      res.render('update-workout', { workout: workout, id: id});
+      res.render('edit-workout', { workout: workout, id: id});
   } catch (e) {
       res.status(404).send({
           message: `could not find workout ${id}`

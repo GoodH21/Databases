@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <meta name="description" content="" />
-    <title>All Workouts</title>
+    <title>Muscle Group: Arms</title>
 
     <link
       rel="canonical"
@@ -36,8 +36,11 @@
   </div>
 <% } %>
 
-<h1 class="text-center"> Workout Database  </h1>
+<h1 class="text-center"> Arms  </h1>
+<div class="col-md-12 col-md-offset-2  justify-content-center">
 
+</div>
+  
   <div class="col-md-12 col-md-offset-2">
   
     <table class="table table-striped custab">
@@ -49,39 +52,37 @@
             <th>Reps</th>
             <th>Weight</th>
             <th>Calories Burned</th>
+            <% if(user) { %>
             <th></th>
+            <% } %>
 
-        <% if(user) { %>
-          <th></th>
-          <% } %> 
-
-      </tr>
-
-      <%  
-      
-        workouts.forEach(workout => {
-          
-      %>
-          <tr>
-            <td><%=  workout.Exercise  %></td>
-            <td><%=  workout.MuscleGroup  %></td> 
-            <td><%=  workout.Sets  %></td> 
-            <td><%=  workout.Reps  %></td> 
-            <td><%=  workout.Weight  %></td> 
-            <td><%=  workout.CaloriesBurned  %></td> 
-              <% if(user) { %>
-                <td class="text-center"><a class='btn btn-info btn-xs' href="/workouts/update/<%= workout.id %>" ><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-                <a  href="/workouts/delete/<%= workout.id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>  
-              <% } %> 
-          </tr>
-          
-       <%  
-        });
-       %>
+        </tr>
 
 
+    </tr>
 
-       
+    <%  
+    
+      workouts.forEach(workout => {
+        
+    %>
+        <tr>
+          <td><%=  workout.Exercise  %></td>
+          <td><%=  workout.MuscleGroup  %></td> 
+          <td><%=  workout.Sets  %></td> 
+          <td><%=  workout.Reps  %></td> 
+          <td><%=  workout.Weight  %></td> 
+          <td><%=  workout.CaloriesBurned  %></td> 
+            <% if(user) { %>
+              <td class="text-center"><a class='btn btn-info btn-xs' href="/arms/update/<%= workout.id %>" ><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+              <a  href="/arms/delete/<%= workout.id %>" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Delete</a></td>  
+            <% } %> 
+        </tr>
+        
+     <%  
+      });
+     %>
+ 
     </thead>
           
     </table>

@@ -1,14 +1,32 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/"> World Wines </a>
+      <a class="navbar-brand" href="/"> PT </a>
       <div class="navbar">
         <div class="navbar-nav">
           <a class="nav-link active" href="/">
             Home <span class="sr-only">(current)</span>
           </a>
           <a class="nav-link" href="workouts"> View Workouts </a>
-          <a class="nav-link" href="categories"> Search by Category</a>
-          <a class="nav-link" href="weight"> Search by Weight</a>
+          <a class="nav-link" href="search-exercise"> Search for exercises </a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Muscles
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="legs">LEGS</a>
+              <a class="dropdown-item" href="arms">ARMS</a>
+              <a class="dropdown-item" href="back">BACK</a>
+              <a class="dropdown-item" href="chest">CHEST</a>
+            </div>
+          </li>
+
+          <% if(user) { %>
+           <a class="nav-link" href="create-workout"> Log your workout </a>
+           <a class="nav-link" href="logout"> <%= user.email %> (Logout) </a> <%
+           }%> <% if(!user) { %>
+           <a class="nav-link" href="login"> Login </a>
+           <% } %>
+
         </div>
       </div>
     </nav>
